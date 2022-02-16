@@ -1,15 +1,12 @@
 package com.example.kotlinbiodatasederhana
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -67,9 +64,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun visitGithub(linkGithub:String){
-        startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkGithub)))
-    }
+    fun visitGithub(linkGithub:String)=startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkGithub)))
+
     fun aboutJS(linkJS:String){
         startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkJS)))
     }
