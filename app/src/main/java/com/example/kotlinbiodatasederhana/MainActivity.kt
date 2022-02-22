@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var badgePHP:ImageView
     lateinit var badgeJava:ImageView
     lateinit var badgeKotlin:ImageView
-    var hyperlink=""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,44 +40,31 @@ class MainActivity : AppCompatActivity() {
         badgePHP=findViewById(R.id.imgViewPHP)
         //
         profilePicture.setImageResource(R.drawable.image)
-        githubLink.setOnClickListener {
-            hyperlink="https://github.com/naufalHaidar12342"
-            visitGithub(hyperlink)
-        }
-        badgeJS.setOnClickListener {
-            hyperlink="https://www.youtube.com/watch?v=RUTV_5m4VeI&list=PLFIM0718LjIWXagluzROrA-iBY9eeUt4w&index=1"
-            aboutJS(hyperlink)
-        }
-        badgeJava.setOnClickListener {
-            hyperlink="https://www.youtube.com/watch?v=d6IIZ6oREcE&list=PLCZlgfAG0GXDUvrO3Bc_VUvIjWKnYIRJ1&index=1"
-            aboutJava(hyperlink)
-        }
-        badgePHP.setOnClickListener {
-            hyperlink="https://www.youtube.com/watch?v=l1W2OwV5rgY&list=PLFIM0718LjIUqXfmEIBE3-uzERZPh3vp6"
-            aboutPHP(hyperlink)
-        }
-        badgeKotlin.setOnClickListener {
-            hyperlink="https://www.youtube.com/watch?v=_1mQshCwG_8"
-            aboutKotlin(hyperlink)
-        }
+        githubLink.setOnClickListener { openHyperlink(URLTujuan.GITHUB_PROFILE.LINK) }
+        badgeJS.setOnClickListener { openHyperlink(URLTujuan.JAVASCRIPT.LINK) }
+        badgeJava.setOnClickListener { openHyperlink(URLTujuan.JAVA.LINK) }
+        badgePHP.setOnClickListener { openHyperlink(URLTujuan.PHP.LINK) }
+        badgeKotlin.setOnClickListener { openHyperlink(URLTujuan.KOTLIN.LINK) }
         keteranganCard.text="\uD83D\uDCD6 sedang belajar : "
 
     }
 
-    fun visitGithub(linkGithub:String)=startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkGithub)))
+    fun openHyperlink(targetLink:String){
+        //ketika targetLink memiliki isi tertentu, maka
+        // startActivity dengan menerima url tersebut
 
-    fun aboutJS(linkJS:String){
-        startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkJS)))
+        /* Contoh : ketika targetLink berisi konstanta GITHUB_PROFILE, dimana GITHUB_PROFILE punya
+        * constructor LINK yang isinya "https\\:github" , maka oper/parse LINK tersebut ke
+        * startActivity() */
+        when (targetLink) {
+            URLTujuan.GITHUB_PROFILE.LINK -> startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(targetLink)))
+            URLTujuan.JAVASCRIPT.LINK -> startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(targetLink)))
+            URLTujuan.JAVA.LINK -> startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(targetLink)))
+            URLTujuan.PHP.LINK -> startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(targetLink)))
+            URLTujuan.KOTLIN.LINK -> startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(targetLink)))
+        }
     }
-    fun aboutJava(linkJava:String){
-        startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkJava)))
-    }
-    fun aboutPHP(linkPHP:String){
-        startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkPHP)))
-    }
-    fun aboutKotlin(linkKotlin:String){
-        startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(linkKotlin)))
-    }
+
 
 
 }
